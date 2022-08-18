@@ -1,0 +1,41 @@
+/*
+main colors:
+#501F3A dark purple
+#CB2D6F pink
+#CCCCCC clay
+#14A098 aqua ish
+#0F292F very dark blue
+*/
+
+body {
+    margin: 0;
+    background-color: #0f292f;
+}
+
+.topnav {
+    background-color: #172c31;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px -2px  rgb(0, 0, 0, .2);
+    padding: 1rem 1rem
+  }
+  
+  
+  
+
+  .navbar-button {
+    color: #CCCCCC;
+    text-decoration: none;
+    align-items: center;
+    font-size: 1.85rem;
+    padding: 10px;
+  }
+  
+  .topnav a:hover {
+    color:#14a098;
+  }
+  
+  .topnav a.active {
+    color:#14a098;
+  }

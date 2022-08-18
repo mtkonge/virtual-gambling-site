@@ -1,0 +1,2 @@
+
+get logo for site and replace it with the "home" text

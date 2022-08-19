@@ -20,22 +20,22 @@ body {
     box-shadow: 0 2px 4px -2px  rgb(0, 0, 0, .2);
     padding: 1rem 1rem
   }
-  
-  
-  
 
-  .navbar-button {
-    color: #CCCCCC;
-    text-decoration: none;
-    align-items: center;
-    font-size: 1.85rem;
-    padding: 10px;
-  }
-  
-  .topnav a:hover {
-    color:#14a098;
-  }
-  
-  .topnav a.active {
-    color:#14a098;
-  }
+#navbar-account-button {
+    gap: 0.5em;
+}
+
+.navbar-button {
+color: #CCCCCC;
+text-decoration: none;
+align-items: center;
+font-size: 1.85rem;
+}
+
+.topnav a:hover {
+color:#14a098;
+}
+
+.topnav a.active {
+color:#14a098;
+}

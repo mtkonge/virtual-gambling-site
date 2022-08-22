@@ -38,11 +38,11 @@ body {
 }
 
 .navbar-button {
-display: flex;
-color: #CCCCCC;
-align-items: center;
-text-decoration: none;
-font-size: 1.85rem;
+    display: flex;
+    color: #CCCCCC;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.85rem;
 }
 
 .topnav a:hover {
@@ -63,8 +63,35 @@ color:#14a098;
     padding: 1rem;
 }
 
-.input-field {
-    background-color: #172c31;
-    padding: 12px 50px;
-    color: #CCCCCC
+.input-container {
+    position: relative;
 }
+
+.input-container {
+    padding-left: 14px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #28353a;
+    border-radius: 4px;
+}
+
+.input-container input {
+    color: #CCCCCC;
+    border: none;
+    font-size: 1.1em;
+    padding: 14px ;
+    background-color: transparent;
+}
+
+.input-container img {
+    height: 1.8em;
+    width: 1.8em;
+}
+
+
+
+.input-container input:focus {
+    outline: 2px solid #14A098;
+}
+

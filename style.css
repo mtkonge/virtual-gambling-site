@@ -22,13 +22,20 @@ body {
   }
 
 #navbar-account-button {
-    gap: 0.5em;
+    gap: 0.25em;
 }
 
+#navbar.account-text {
+    
+
+}
+
+
 .navbar-button {
+display: flex;
 color: #CCCCCC;
-text-decoration: none;
 align-items: center;
+text-decoration: none;
 font-size: 1.85rem;
 }
 

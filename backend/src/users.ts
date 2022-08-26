@@ -2,115 +2,100 @@ import { Database } from "./Database";
 import { Request, Response, Router } from "express";
 import { User } from "./Models/User";
 import { Session } from "./Models/Session";
-import { checkSession, generateUUID } from "./utils";
+import { checkSession, doesExist, generateUUID } from "./utils";
+import bcrypt from "bcrypt";
+
 
 export const userApiRoutes = (router: Router, database: Database) => {
-
-    router.post("/register", async (req: Request, res: Response) => {
-
-        const username = req.body.username;
-        const password = req.body.username;
-
-        if (!username || !password || /[<>]/.test(username))
-            return res.json({msg: "Invalid username/password"})
-
-        
-        if (await database.findUserByUsername(username))
-            return res.json({msg: "Username occupied"})
-        
-        
-        const user = new User(username, password)
-
-        await database.addUser(user)
-
-        return res.json({msg: "OK", userId: user.id})
-    });
-
-    router.post("/login", async (req: Request, res: Response) => {
-
-        //gets username and password from inputs
+    router.post("/user/register", async (req: Request, res: Response) => {
         const username = req.body.username;
         const password = req.body.password;
-        
+
+        if (!username || !password || /[<>]/.test(username))
+            return res.json({ msg: "Invalid username/password" });
+
+        if (await database.findUserByUsername(username))
+            return res.json({ msg: "Username occupied" });
+
+        const user = new User(username, await bcrypt.hash(password, 10));
+
+        await database.addUser(user);
+
+        return res.json({ msg: "Ok", userId: user.id });
+    });
+
+    router.post("/user/login", async (req: Request, res: Response) => {
+        const username = req.body.username;
+        const password = req.body.password;
+
+        if (!doesExist([username, password]) === null) {
+            return res.json({ msg: "Missing input" });
+        }
+
         const user = await database.findUserByUsername(username);
 
-        //checks if the user exists
         if (user === null) {
             return res.json({ msg: "Wrong username/password" });
         }
 
-        //checks if password is correct
-        if (user.password !== password) {
-            return res.json({ msg: "Wrong username/password" })
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            return res.json({ msg: "Wrong username/password" });
         }
 
-        // create a session
         const session = new Session(generateUUID(), user.id);
 
-        await database.addSession(session);        
+        await database.addSession(session);
 
-        //sets a cookie, called "token" on the clients browser with the token
-        res.cookie("token", session.token);
+        res.cookie("token", session.token, {
+            httpOnly: true,
+            sameSite: "lax",
+        });
 
-        //display message, id and token in console
-        return res.json({ msg: "Ok", id: user.id, token: session.token });
+        return res.json({ msg: "Ok", id: user.id });
     });
 
-    router.post("/logout", async (req: Request, res: Response) => {
-
-        //check auth, get session
+    router.post("/user/logout", async (req: Request, res: Response) => {
         const session = await checkSession(req, database);
         if (session !== null) {
             await database.removeSession(session);
         }
 
-        //remove cookie
-        res.clearCookie("token")
-        return res.json({ msg:  "Ok"})
+        res.clearCookie("token");
 
-
+        return res.json({ msg: "Ok" });
     });
 
-    router.get("/user/:id", async (req: Request, res: Response) => {
-        
-        // get id from params
+    router.get("/user/one/:id", async (req: Request, res: Response) => {
         const id = parseInt(req.params.id);
 
-        //if session not exist redirect
         const session = await checkSession(req, database);
         if (session === null) {
-            return res.json({msg: "Unauthorized"});
+            return res.json({ msg: "Unauthorized" });
         }
-
-        //respond with user information
 
         const user = await database.findUserById(id);
 
-        if (user === null)
-            return res.json({msg: "reee"});
+        if (user === null) return res.json({ msg: "User doesn't exist" });
 
-        return res.json({ id: user.id, username: user.username });
+        return res.json({ msg: "Ok", id: user.id, username: user.username });
+    });
 
-    })
-
-
-    router.get("/data", async (req: Request, res: Response) => {
-
+    router.get("/user/data", async (req: Request, res: Response) => {
         const session = await checkSession(req, database);
 
-        //check if session exists
         if (session === null) {
-            return res.json({msg: "Unauthorized"});
+            return res.json({ msg: "Unauthorized" });
         }
 
-        //trying to find user from userId, and returns user found
-        
         const user = await database.findUserById(session.userId);
 
-        if (user === null) 
-            return res.json({ msg: "No worky worky" });
+        if (user === null) return res.json({ msg: "User doesn't exist" });
 
-        return res.json({msg: "Ok", data: user});
-    })
-    return router
-}
+        const noPasswordUser = { ...user, password: undefined };
+
+        return res.json({ msg: "Ok", data: noPasswordUser });
+    });
+    return router;
+};

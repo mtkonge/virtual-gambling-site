@@ -7,6 +7,10 @@ main colors:
 #0F292F very dark blue
 */
 
+:root {
+    --svg-color: #CCCCCC
+}
+
 body {
     margin: 0;
     color: #CCCCCC;
@@ -40,11 +44,11 @@ body {
 }
 
 .topnav a:hover {
-color:#14a098;
+    color:#14a098;
 }
 
 .topnav a.active {
-color:#14a098;
+    color:#14a098;
 }
 
 .account-container {
@@ -56,6 +60,8 @@ color:#14a098;
     transform: translate(-50%, -50%);
     padding: 1rem;
 }
+
+
 
 .input-container {
     position: relative;

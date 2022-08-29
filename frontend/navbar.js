@@ -14,17 +14,15 @@ const logout = async () => {
 };
 
 const navbarMain = async () => {
-    console.log("start")
     const user = await userInfo();
     if (!user) return;
 
     const accountImage = document.getElementById("navbar-account-image")
-    accountImage.src = "/images/logout.svg"
+    accountImage.href = "logout"
 
     const accountText = document.getElementById("navbar-account-text")
     accountText.textContent = ("Log out")
 
-    console.log("mid")
 
     const accountInput = document.getElementById("navbar-account-button")
     accountInput.href = "/logout";
@@ -33,7 +31,6 @@ const navbarMain = async () => {
         logout();
     });
 
-    console.log("end")
 
 
 };

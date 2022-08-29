@@ -27,12 +27,6 @@ body {
     padding: 1rem 1rem
   }
 
-.mainnav {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
 #navbar-account-button {
     gap: 0.25em;
 }
@@ -84,6 +78,8 @@ color:#14a098;
     background-color: transparent;
 }
 
+
+
 .input-container img {
     height: 1.8em;
     width: 1.8em;
@@ -114,4 +110,5 @@ color:#14a098;
 
 .error-msg {
     color: red;
+    font-weight: bold;
 }

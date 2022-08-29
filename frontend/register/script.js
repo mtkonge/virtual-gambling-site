@@ -12,7 +12,7 @@ registerButton.addEventListener("click", async () => {
     const body = await res.json();
 
     if (body.msg === "Ok") {
-        return (window.location = "/");
+        return (window.location = "/login");
     } else {
         errorMsg.textContent = body.msg;
     }

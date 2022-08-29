@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import { MemoryDb } from "./MemoryDb"
 import { api } from "./api"
+import cookieParser from "cookie-parser" 
 
 const PORT = 8000;
 
@@ -14,7 +15,9 @@ const main = async () => {
 
     app.use(cors()); //enables cors
     app.use(express.json()); //enables use of json in requests
-    
+    app.use(cookieParser());
+
+
     app.use("/api", api(database));
     app.use("/", express.static("../frontend"));
 

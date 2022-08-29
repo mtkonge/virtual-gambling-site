@@ -14,11 +14,13 @@ loginButton.addEventListener("click", async () => {
 
 
     if (body.msg === "Ok") {
+        
         return window.location = "/";
+
+
     } else {
         errorMsg.textContent = body.msg
     }
-    console.log("assadasddas")
 
 
 });

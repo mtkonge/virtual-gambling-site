@@ -103,7 +103,9 @@ color:#14a098;
     border-radius: 4px;
     width: 100%;
     padding: 14px;
-    box-shadow: 0px 0px 8px;
+    color: #CCCCCC;
+    box-shadow: 2px 4px 8px black;
+    
 }
 
 .account-button:hover {

@@ -1,4 +1,4 @@
-const accountButton = document.getElementById("login-button");
+const accountButton = document.getElementById("register-button");
 
 accountButton.addEventListener("click", () => {
         window.location.pathname = "/"

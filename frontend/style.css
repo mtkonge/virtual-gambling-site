@@ -111,3 +111,7 @@ color:#14a098;
 .account-button:hover {
     cursor:pointer
 }
+
+.error-msg {
+    color: red;
+}

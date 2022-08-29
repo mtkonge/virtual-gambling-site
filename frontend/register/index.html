@@ -11,21 +11,24 @@
     <h1>logo</h1>
     <div class="account-container">
         <h1>Sign up to (site name)</h1>
+        <p id="error-msg" class="error-msg"></p>
         <h3>Enter your username and password</h3>
         <div class="input-container">
             <img src="../images/username.svg">
-            <input class="input-field" type="text" placeholder="Username">
+            <input class="input-field" type="text" placeholder="Username" id="username-input">
         </div>
         <br>
         <div class="input-container">
             <img src="../images/password.svg">
-            <input class="input-field" type="password" placeholder="Password">
+            <input class="input-field" type="password" placeholder="Password" id="password-input">
         </div>
+        <br>
         <button type="button" id="register-button" class="account-button">Register</button>
         <p>
             Already have an account? <a href="../login/">Sign in</a>
         </p>
     </div>
+    <script src="/utils.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

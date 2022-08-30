@@ -7,9 +7,6 @@ main colors:
 #0F292F very dark blue
 */
 
-:root {
-    --svg-color: #CCCCCC
-}
 
 body {
     margin: 0;
@@ -45,6 +42,7 @@ body {
 
 .topnav a:hover {
     color:#14a098;
+    
 }
 
 .topnav a.active {

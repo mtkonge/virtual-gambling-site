@@ -16,23 +16,25 @@
         </a>
     </header>
     <div class="game-row">
-        <a href="oleflip" class="game-card">
+        <div class="game-card" id="ole-flip-button">
             <h2>Oleflip</h2>
             <img src="images/realcoin.webp" height="100" width="100">
-        </a>
+        </div>
         
     </div>
     <div class="games">
-        <div class="oleflip-container">
-            <span class="close">&times;</span>
-            <h2>OleFlip</h2>
-            <video src="videos/video placeholder.mp4" controls muted autoplay width="200px" height="200px"></video>
-            <div class="input-container">
-                <input type="text" class="input-field">
+        <div class="game" id="ole-flip">
+            <div class="game-content">
+                <span class="close" id="ole-flip-close-button">&times;</span>
+                <h2>OleFlip</h2>
+                <video src="videos/video placeholder.mp4" muted width="200px" height="200px" class="game-video"></video>
+                <div class="game-input-container">
+                    <input type="text" class="input-field" placeholder="amount">
+                </div>
             </div>
         </div>
-
     </div>
     <script src="navbar.js"></script>
+    <script src="games.js"></script>
 </body>
 </html>

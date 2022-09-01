@@ -59,13 +59,8 @@ body {
     padding: 1rem;
 }
 
-
-
 .input-container {
     position: relative;
-}
-
-.input-container {
     padding-left: 14px;
     display:flex;
     justify-content: center;
@@ -73,7 +68,6 @@ body {
     background-color: #28353a;
     border-radius: 4px;
 }
-
 
 
 .input-container input {
@@ -134,12 +128,68 @@ body {
     box-shadow: 0px 2px 4px black;
 }
 
+.game-card:hover {
+    cursor:pointer;
+}
+
+
 .game-row {
     display: flex;
     flex-direction: row;
 
 }
 
-#oleflip-container {
+.game {
     display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4);
+}
+.game-content {
+    text-align: center;
+    background-color: #0f292f;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    width: 40%;
+
+}
+.close {
+    color: #CCCCCC;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color:#14a098;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.game-input-container {
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+
+}
+
+
+.game-input-container input {
+    color: #CCCCCC;
+    border: none;
+    font-size: 1.1em;
+    padding: 14px ;
+    background-color: #28353a;
+}
+
+.game-input-container input:focus {
+    outline: 2px solid #14A098;
 }

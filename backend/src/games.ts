@@ -1,12 +1,12 @@
 import { Database } from "./Database";
 import { Request, Response, Router } from "express";
 import { checkSession } from "./utils";
-import { Coinflip } from "Models/Coinflip";
+import { Coinflip } from "./Models/Coinflip";
 
 export const gameApiRoutes = (router: Router, database: Database) => {
     
     router.post("/games/coinflip/:id", async (req: Request, res: Response) => {
-        const id = req.body.id
+        const id = parseInt(req.params.id)
         const coinsUsed = req.body.coins
         
         const session = await checkSession(req, database);
@@ -24,8 +24,10 @@ export const gameApiRoutes = (router: Router, database: Database) => {
             return res.json({ msg: "User doesn't have enough coins"})
         }
 
-        const result = new Coinflip(coinsUsed).calcResult()
+        const coinflip = new Coinflip(coinsUsed)
 
-            return res.json({result: result})
+        const result = database.calcCoinflipResult(user, coinflip)
+
+        return res.json({msg: "Ok", result: result})
     });
 }

@@ -1,6 +1,7 @@
 import { User } from "./Models/User";
 import { Database } from "./Database";
 import { Session } from "./Models/Session";
+import { Coinflip } from "Models/Coinflip";
 
 export class MemoryDb extends Database {
 
@@ -47,5 +48,14 @@ export class MemoryDb extends Database {
 
     public removeSession = async (session: Session) => {
         return this.sessions.splice(this.sessions.indexOf(session), 1)[0] || null;
+    }
+
+    public calcCoinflipResult = async (user: User, coinflip: Coinflip) => {
+        if (coinflip.flip()) {
+            user.coins += coinflip.coinsUsed;
+            return true;
+        }
+        user.coins -= coinflip.coinsUsed;
+        return false
     }
 }

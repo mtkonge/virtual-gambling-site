@@ -1,3 +1,8 @@
+const userInfo = async () => {
+    const res = await (await fetch("/api/user/data")).json();
+    if (res.msg === "Ok") return res.data;
+    return null;
+};
 
 const sendPostRequest = async (url, data = {}) => {
 

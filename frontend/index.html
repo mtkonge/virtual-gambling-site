@@ -10,11 +10,18 @@
 <body>
     <header class="topnav">
         <a class="navbar-button" href="/">Home</a>
+        <div class="navbar-text">
+            <img id="coins-image" src="images/coin.svg">
+            <span id="coins-text"></span>
+        </div>
         <a id="navbar-account-button" class="navbar-button" href="login">
             <img id="navbar-account-image" src="images/login.svg">
             <span id="navbar-account-text">Log in</span>
         </a>
     </header>
+    <div class="main-row">
+        <h1 id="welcome-text"></h1>
+    </div>
     <div class="game-row">
         <div class="game-card" id="ole-flip-button">
             <h2>Oleflip</h2>
@@ -27,13 +34,19 @@
             <div class="game-content">
                 <span class="close" id="ole-flip-close-button">&times;</span>
                 <h2>OleFlip</h2>
-                <video src="videos/video placeholder.mp4" muted width="200px" height="200px" class="game-video"></video>
-                <div class="game-input-container">
-                    <input type="text" class="input-field" placeholder="amount">
+                <div class="video-section">
+                    <video src="videos/video placeholder.mp4" muted width="200px" height="200px" class="game-video"></video>
                 </div>
+
+                <div class="game-input-container">
+                    <input type="number" id="ole-flip-input" class="input-field" placeholder="amount">
+                    <button id="ole-flip-bet-button">bet</button>
+                </div>
+                <p id="ole-flip-error-msg" class="error-msg"></p>
             </div>
         </div>
     </div>
+    <script src="utils.js"></script>
     <script src="navbar.js"></script>
     <script src="games.js"></script>
 </body>

@@ -1,23 +1,18 @@
-import { randInt } from "utils";
-import { Game } from "./Game";
+import { randInt } from "../utils";
 
-export class Coinflip extends Game {
-    
+export class Coinflip {
+    public coinsUsed: number
+
     constructor(coinsUsed: number) {
-        super(coinsUsed);
+        this.coinsUsed = coinsUsed
     }
 
     flip() {
-        if(randInt(1,100) < 40)
+        if(randInt(1,100) < 50)
             return true
         return false
     }
 
-    calcResult() {
-        if (this.flip())
-            return this.coinsUsed * 2
-        return 0
-    }
 
 
 }

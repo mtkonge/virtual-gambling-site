@@ -1,11 +1,5 @@
 
 
-const userInfo = async () => {
-    const res = await (await fetch("/api/user/data")).json();
-    if (res.msg === "Ok") return res.data;
-    return null;
-};
-
 const logout = async () => {
     const res = await (
         await fetch("/api/user/logout", { method: "POST" })
@@ -16,6 +10,15 @@ const logout = async () => {
 const navbarMain = async () => {
     const user = await userInfo();
     if (!user) return;
+
+    const welcomeText = document.getElementById("welcome-text");
+    welcomeText.innerHTML = "Welcome to gamblingsite, " + user.username
+
+    const coinsImg = document.getElementById("coins-image")
+    coinsImg.style.display = "block"
+
+    const coinsText = document.getElementById("coins-text");
+    coinsText.innerHTML = user.coins
 
     const accountImage = document.getElementById("navbar-account-image")
     accountImage.href = "logout"

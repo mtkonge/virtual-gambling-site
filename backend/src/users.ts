@@ -1,7 +1,7 @@
 import { Database } from "./Database";
 import { Request, Response, Router } from "express";
-import { User } from "./Models/User";
-import { Session } from "./Models/Session";
+import { User } from "./User";
+import { Session } from "./Session";
 import { checkSession, doesExist, generateUUID } from "./utils";
 import bcrypt from "bcrypt";
 

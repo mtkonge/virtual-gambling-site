@@ -1,7 +1,7 @@
-import { User } from "./Models/User";
+import { User } from "./User";
 import { Database } from "./Database";
-import { Session } from "./Models/Session";
-import { Coinflip } from "Models/Coinflip";
+import { Session } from "./Session";
+import { Coinflip } from "./Coinflip";
 
 export class MemoryDb extends Database {
     private users: User[];

@@ -1,4 +1,4 @@
-import { randInt } from "../utils";
+import { randInt } from "./utils";
 
 export class Session {
     public id: number;

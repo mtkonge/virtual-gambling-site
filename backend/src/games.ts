@@ -1,7 +1,7 @@
 import { Database } from "./Database";
 import { Request, Response, Router } from "express";
 import { checkSession } from "./utils";
-import { Coinflip } from "./Models/Coinflip";
+import { Coinflip } from "./Coinflip";
 
 export const gameApiRoutes = (router: Router, database: Database) => {
     router.post("/games/coinflip/:id", async (req: Request, res: Response) => {

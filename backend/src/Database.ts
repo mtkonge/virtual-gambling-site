@@ -1,6 +1,6 @@
-import { Coinflip } from "./Models/Coinflip";
-import { Session } from "./Models/Session";
-import { User } from "./Models/User";
+import { Coinflip } from "./Coinflip";
+import { Session } from "./Session";
+import { User } from "./User";
 
 export abstract class Database {
     public abstract findUserById: (id: number) => Promise<User | null>;

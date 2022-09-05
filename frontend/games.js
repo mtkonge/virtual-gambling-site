@@ -1,10 +1,10 @@
 const oleFlipGame = document.getElementById("ole-flip");
 const oleFlipOpen = document.getElementById("ole-flip-button");
 const oleFlipClose = document.getElementById("ole-flip-close-button");
-const oleFlipButton = document.getElementById("ole-flip-bet-button")
-const oleFlipInput = document.getElementById("ole-flip-input")
-const oleFlipErrorMsg = document.getElementById("ole-flip-error-msg")
-
+const oleFlipButton = document.getElementById("ole-flip-bet-button");
+const oleFlipInput = document.getElementById("ole-flip-input");
+const oleFlipErrorMsg = document.getElementById("ole-flip-error-msg");
+const totalCoinsNav = document.getElementById("coins-text");
 
 oleFlipOpen.onclick = () => {
     oleFlipGame.style.display = "block";
@@ -31,6 +31,12 @@ oleFlipButton.addEventListener("click", async () => {
     const body = await res.json();
 
     if (body.msg === "Ok") {
+        if (body.result === false) {
+            totalCoinsNav.innerHTML = user.coins - coinsUsed
+        }
+        else {
+            totalCoinsNav.innerHTML = user.coins + coinsUsed
+        }
         return body.result
     }
     return null;

@@ -8,8 +8,9 @@ export class Coinflip {
     }
 
     flip() {
-        if(randInt(1,100) < 50)
+        if(randInt(1,100) < 45) {
             return true
+        }
         return false
     }
 

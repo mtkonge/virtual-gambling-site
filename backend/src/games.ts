@@ -26,8 +26,9 @@ export const gameApiRoutes = (router: Router, database: Database) => {
 
         const coinflip = new Coinflip(coinsUsed)
 
-        const result = database.calcCoinflipResult(user, coinflip)
+        const result = await database.calcCoinflipResult(user, coinflip)
 
         return res.json({msg: "Ok", result: result})
     });
+    return router
 }

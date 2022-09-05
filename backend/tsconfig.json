@@ -1,17 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "lib": ["ES2015"],
+
+    // output
+    "target": "ES2022",
+    "lib": ["ES2022"],
     "module": "CommonJS",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "outDir": "./dist/",
     "rootDir": "./src/",
     "baseUrl": "./src/",
-    "allowSyntheticDefaultImports": true,
+
+    // development features
     "inlineSourceMap": true,
     "inlineSources": true,
     "strict": true,
-    "esModuleInterop": true,
+    "pretty": true,
+
+    // performance
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
   },
   "include": ["./src/**/*"]
 }

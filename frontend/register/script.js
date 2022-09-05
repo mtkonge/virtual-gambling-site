@@ -1,7 +1,7 @@
 const registerButton = document.getElementById("register-button");
-const usernameInput = document.getElementById("username-input")
-const passwordInput = document.getElementById("password-input")
-const errorMsg = document.getElementById("error-msg")
+const usernameInput = document.getElementById("username-input");
+const passwordInput = document.getElementById("password-input");
+const errorMsg = document.getElementById("error-msg");
 
 registerButton.addEventListener("click", async () => {
     const data = {

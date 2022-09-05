@@ -5,7 +5,6 @@ import { Session } from "./Models/Session";
 import { checkSession, doesExist, generateUUID } from "./utils";
 import bcrypt from "bcrypt";
 
-
 export const userApiRoutes = (router: Router, database: Database) => {
     router.post("/user/register", async (req: Request, res: Response) => {
         const username = req.body.username;

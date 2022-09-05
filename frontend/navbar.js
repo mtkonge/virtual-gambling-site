@@ -1,5 +1,3 @@
-
-
 const logout = async () => {
     const res = await (
         await fetch("/api/user/logout", { method: "POST" })
@@ -12,31 +10,26 @@ const navbarMain = async () => {
     if (!user) return;
 
     const welcomeText = document.getElementById("welcome-text");
-    welcomeText.innerHTML = "Welcome to gamblingsite, " + user.username
+    welcomeText.innerHTML = "Welcome to gamblingsite, " + user.username;
 
-    const coinsImg = document.getElementById("coins-image")
-    coinsImg.style.display = "block"
+    const coinsImg = document.getElementById("coins-image");
+    coinsImg.style.display = "block";
 
     const coinsText = document.getElementById("coins-text");
-    coinsText.innerHTML = user.coins
+    coinsText.innerHTML = user.coins;
 
-    const accountImage = document.getElementById("navbar-account-image")
-    accountImage.href = "logout"
+    const accountImage = document.getElementById("navbar-account-image");
+    accountImage.href = "logout";
 
-    const accountText = document.getElementById("navbar-account-text")
-    accountText.textContent = ("Log out")
+    const accountText = document.getElementById("navbar-account-text");
+    accountText.textContent = "Log out";
 
-
-    const accountInput = document.getElementById("navbar-account-button")
+    const accountInput = document.getElementById("navbar-account-button");
     accountInput.href = "/logout";
     accountInput.addEventListener("click", (event) => {
         event.preventDefault();
         logout();
     });
-
-
-
 };
 
-
-navbarMain()
+navbarMain();

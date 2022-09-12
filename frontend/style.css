@@ -240,5 +240,14 @@ button:hover {
     display: none;
 }
 
+#ole-flip-img-container {
+    height: 300px;
+    width: 200px;
+
+}
+
+#ole-flip-img {
+    width: 100%;
+}
 
 

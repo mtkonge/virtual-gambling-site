@@ -4,8 +4,7 @@ import { checkSession } from "./utils";
 import { Coinflip } from "./Coinflip";
 
 export const gameApiRoutes = (router: Router, database: Database) => {
-    router.post("/games/coinflip/:id", async (req: Request, res: Response) => {
-        const id = parseInt(req.params.id);
+    router.post("/games/coinflip", async (req: Request, res: Response) => {
         const coinsUsed = req.body.coins;
 
         const session = await checkSession(req, database);
@@ -13,7 +12,7 @@ export const gameApiRoutes = (router: Router, database: Database) => {
             return res.json({ msg: "Unauthorized" });
         }
 
-        const user = await database.findUserById(id);
+        const user = await database.findUserById(session.userId);
 
         if (user === null) {
             return res.json({ msg: "User doesn't exist" });

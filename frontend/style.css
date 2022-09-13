@@ -240,6 +240,11 @@ button:hover {
     display: none;
 }
 
+#ole-flip-img-container-container {
+    display: flex;
+    justify-content: center;
+}
+
 #ole-flip-img-container {
     height: 300px;
     width: 200px;
@@ -248,6 +253,9 @@ button:hover {
 
 #ole-flip-img {
     width: 100%;
+}
+
+#result-text {
 }
 
 

@@ -6,6 +6,8 @@ const oleFlipInput = document.getElementById("ole-flip-input");
 const oleFlipErrorMsg = document.getElementById("ole-flip-error-msg");
 const totalCoinsNav = document.getElementById("coins-text");
 const oleFlipImage = document.getElementById("ole-flip-img")
+const resultText = document.getElementById("result-text")
+
 
 oleFlipOpen.onclick = () => {
     oleFlipGame.style.display = "block";
@@ -35,9 +37,13 @@ oleFlipButton.addEventListener("click", async () => {
 
     if (body.msg === "Ok") {
         if (body.result === false) {
+            resultText.style.color = "red";
+            resultText.textContent = "Soelberg cursed you!"
             oleFlipImage.src = "images/soelberg.png"
             totalCoinsNav.innerHTML = user.coins - coinsUsed;
         } else {
+            resultText.style.color = "rgb(0, 220, 40)";
+            resultText.textContent = "Helledie blessed you!"
             oleFlipImage.src = "images/helledie.jpg"
             totalCoinsNav.innerHTML = user.coins + coinsUsed;
         }

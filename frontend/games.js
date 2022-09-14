@@ -9,6 +9,8 @@ const oleFlipImage = document.getElementById("ole-flip-img")
 const resultText = document.getElementById("result-text")
 
 
+let flipping = false
+
 oleFlipOpen.onclick = () => {
     oleFlipGame.style.display = "block";
 };
@@ -23,30 +25,35 @@ window.onclick = (event) => {
     }
 };
 oleFlipButton.addEventListener("click", async () => {
+    if (flipping) {
+        return;
+    }
     const user = await userInfo();
     const coinsUsed = parseInt(oleFlipInput.value);
     if (oleFlipInput.value > user.coins) {
         oleFlipErrorMsg.innerHTML = "You don't have that amount of coins";
         return null;
     }
-
+    
     const res = await sendPostRequest("/api/games/coinflip", {
         coins: coinsUsed,
     });
     const body = await res.json();
-
+    
     if (body.msg === "Ok") {
+        flipping = true;
         if (body.result === false) {
+            await animation("soelberg");
             resultText.style.color = "red";
             resultText.textContent = "Soelberg cursed you!"
-            oleFlipImage.src = "images/soelberg.png"
             totalCoinsNav.innerHTML = user.coins - coinsUsed;
         } else {
+            await animation("helledie");
             resultText.style.color = "rgb(0, 220, 40)";
             resultText.textContent = "Helledie blessed you!"
-            oleFlipImage.src = "images/helledie.jpg"
             totalCoinsNav.innerHTML = user.coins + coinsUsed;
         }
+        flipping = false
         return body.result;
     }
     return null;

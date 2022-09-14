@@ -246,16 +246,15 @@ button:hover {
 }
 
 #ole-flip-img-container {
-    height: 300px;
-    width: 200px;
-
+    --image-helledie: url("images/helledie.jpg");
+    --image-soelberg: url("images/soelberg.png");      
+    height: 250px;
+    width: 250px;
+    background-image: var(--image-helledie);
+    border-radius: 50%;
+    background-size: cover;
+    
 }
 
-#ole-flip-img {
-    width: 100%;
-}
-
-#result-text {
-}
 
 

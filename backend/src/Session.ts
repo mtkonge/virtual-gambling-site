@@ -6,7 +6,7 @@ export class Session {
     public userId: number;
 
     constructor(token: string, userId: number) {
-        this.id = randInt(0, 100000000);
+        this.id = randInt(10000000, 99999999);
         this.token = token;
         this.userId = userId;
     }

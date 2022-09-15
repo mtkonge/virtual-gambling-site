@@ -7,7 +7,7 @@ export class User {
     public coins: number;
 
     constructor(username: string, password: string) {
-        this.id = randInt(0, 100000000);
+        this.id = randInt(10000000, 99999999);
         this.username = username;
         this.password = password;
         this.coins = 100;

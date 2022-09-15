@@ -3,13 +3,17 @@ import express from "express";
 import { MemoryDb } from "./MemoryDb";
 import { api } from "./api";
 import cookieParser from "cookie-parser";
+import { MongoDb } from "./MongoDb";
 
 const PORT = 8000;
 
 const main = async () => {
     const app = express(); //create express app
 
-    const database = new MemoryDb();
+    const database = new MongoDb();
+    await database.connect();
+
+    //const database = new MemoryDb();
 
     app.use(cors()); //enables cors
     app.use(express.json()); //enables use of json in requests

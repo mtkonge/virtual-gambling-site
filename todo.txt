@@ -4,6 +4,8 @@ leaderboard
 give coins on login everyday
 profile page
 
+
+
 games:
     other typical gambling games
     utc

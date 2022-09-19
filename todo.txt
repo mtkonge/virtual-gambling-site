@@ -1,18 +1,12 @@
 
 
-get a good name for the site
-get logo for site and replace it with the "home" text
-
-
-putting password.svg and username.svg inside the inputs
+leaderboard
+give coins on login everyday
+profile page
 
 games:
-    coinflip
     other typical gambling games
-
-    permission:
-        utc leaderboard
-        er x mødt op
+    utc
 
 
 

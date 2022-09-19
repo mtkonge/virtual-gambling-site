@@ -10,7 +10,7 @@ const navbarMain = async () => {
     if (!user) return;
 
     const welcomeText = document.getElementById("welcome-text");
-    welcomeText.innerHTML = "Welcome to gamblingsite, " + user.username;
+    welcomeText.innerHTML = "Welcome to soc-gambling, " + user.username;
 
     const coinsImg = document.getElementById("coins-image");
     coinsImg.style.display = "block";

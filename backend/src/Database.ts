@@ -21,4 +21,6 @@ export abstract class Database {
         user: User,
         coinflip: Coinflip,
     ) => Promise<true | false>;
+
+    public abstract giveCoinsAll: (coins: number) => Promise<void>
 }

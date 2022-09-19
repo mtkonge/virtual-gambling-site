@@ -10,15 +10,15 @@ const PORT = 8000;
 const main = async () => {
     const app = express(); //create express app
 
+
     const database = new MongoDb();
     await database.connect();
 
     //const database = new MemoryDb();
-
     app.use(cors()); //enables cors
     app.use(express.json()); //enables use of json in requests
     app.use(cookieParser());
-
+    
     app.use("/api", api(database));
     app.use("/", express.static("../frontend"));
 

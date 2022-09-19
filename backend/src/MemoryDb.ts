@@ -55,4 +55,10 @@ export class MemoryDb extends Database {
         user.coins -= coinflip.coinsUsed;
         return false;
     };
+
+    public giveCoinsAll = async (coins: number) => {
+        for(let i = 0; i < this.users.length; i++) {
+            this.users[i].coins += coins
+        }
+    };
 }

@@ -1,5 +1,5 @@
 const logout = async () => {
-    const res = await (
+    await (
         await fetch("/api/user/logout", { method: "POST" })
     ).json();
     window.location.reload();

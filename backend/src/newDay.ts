@@ -8,13 +8,16 @@ export const newDayApiRoutes = (router: Router, database: Database) => {
             return res.json({msg: "Day invalid"})
         }
         
-        const day = new Date().getDate() 
+        const today = new Date().getDate()
         
-        if (lastDay === day) {
+        if (lastDay === today) {
             return res.json({msg: "Day has not incremented yet"})
         }
         
-        //Todo: add coins to users
+        database.incrementAllCoins(20)
+        lastDay = today
+
+        return res.json({msg: "Ok"})
     });
 
     return router;

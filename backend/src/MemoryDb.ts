@@ -56,7 +56,7 @@ export class MemoryDb extends Database {
         return false;
     };
 
-    public giveCoinsAll = async (coins: number) => {
+    public incrementAllCoins = async (coins: number) => {
         for(let i = 0; i < this.users.length; i++) {
             this.users[i].coins += coins
         }

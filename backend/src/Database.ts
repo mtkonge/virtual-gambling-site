@@ -22,5 +22,5 @@ export abstract class Database {
         coinflip: Coinflip,
     ) => Promise<true | false>;
 
-    public abstract giveCoinsAll: (coins: number) => Promise<void>
+    public abstract incrementAllCoins: (coins: number) => Promise<void>
 }

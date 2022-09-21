@@ -72,11 +72,9 @@ export class MongoDb extends Database {
         await users.findOneAndUpdate({id: user.id}, {$set: {coins: (user.coins - coinflip.coinsUsed)}})
         return false;
     };
-    public giveCoinsAll = async (coins: number) => {
+    public incrementAllCoins = async (coins: number) => {
         const users = this.database.collection<User>(Collections.Users)
-        for(let i = 0; i < await users.countDocuments(); i++) {
-            users.aggregate
-        }
+        users.updateMany( {}, {$inc: {coins: coins}})
 
     };
 

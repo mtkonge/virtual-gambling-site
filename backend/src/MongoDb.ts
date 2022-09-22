@@ -8,6 +8,7 @@ import { Coinflip } from "./Coinflip";
 enum Collections {
     Users = "users",
     Sessions = "sessions",
+    Learderboard = "leaderboard"
 }
 
 export class MongoDb extends Database {
@@ -75,7 +76,11 @@ export class MongoDb extends Database {
     public incrementAllCoins = async (coins: number) => {
         const users = this.database.collection<User>(Collections.Users)
         users.updateMany( {}, {$inc: {coins: coins}})
-
     };
+
+    public  updateLeaderboard = async () => {
+        return []
+    }
+
 
 }

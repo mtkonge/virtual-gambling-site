@@ -2,14 +2,23 @@ import { User } from "./User";
 import { Database } from "./Database";
 import { Session } from "./Session";
 import { Coinflip } from "./Coinflip";
+import { LeaderBoardUser } from "./LeaderboardUser";
+import { randInt } from "./utils";
 
 export class MemoryDb extends Database {
     private users: User[];
     private sessions: Session[];
+    private leaderboard: LeaderBoardUser[]
 
     constructor() {
         super();
+        this.leaderboard = [new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), new LeaderBoardUser(), ]
         this.users = [];
+        for (let i = 0; i < 10; i++) {
+            let x = new User("test" + i, "password" + i)
+            x.coinsWon = randInt(0, 100)
+            this.users.push(x)
+        }
         this.sessions = [];
     }
 
@@ -50,6 +59,7 @@ export class MemoryDb extends Database {
     public calcCoinflipResult = async (user: User, coinflip: Coinflip) => {
         if (coinflip.flip()) {
             user.coins += coinflip.coinsUsed;
+            user.coinsWon += coinflip.coinsUsed
             return true;
         }
         user.coins -= coinflip.coinsUsed;
@@ -61,4 +71,14 @@ export class MemoryDb extends Database {
             this.users[i].coins += coins
         }
     };
+    public updateLeaderboard = async () => {
+        for (let i = 0; i < this.users.length; i++) {
+            this.leaderboard[i].position = i + 1
+            this.leaderboard[i].score = this.users[i].coinsWon
+            this.leaderboard[i].userId = this.users[i].id
+        }
+        this.leaderboard = this.leaderboard.sort(function(a, b){return b.score-a.score})
+        
+        return this.leaderboard
+    }
 }

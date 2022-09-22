@@ -1,7 +1,6 @@
 
 
 leaderboard
-give coins on login everyday
 profile page
 
 

@@ -1,3 +1,4 @@
+import { LeaderBoardUser } from "./LeaderboardUser";
 import { Coinflip } from "./Coinflip";
 import { Session } from "./Session";
 import { User } from "./User";
@@ -23,4 +24,6 @@ export abstract class Database {
     ) => Promise<true | false>;
 
     public abstract incrementAllCoins: (coins: number) => Promise<void>
+
+    public abstract updateLeaderboard: () => Promise<LeaderBoardUser[]>
 }

@@ -3,6 +3,7 @@ import { User} from "./User";
 import { Database } from "./Database";
 import { Session } from "./Session";
 import { Coinflip } from "./Coinflip";
+import { LeaderboardUser } from "LeaderboardUser";
 
 
 enum Collections {
@@ -75,10 +76,16 @@ export class MongoDb extends Database {
     };
     public incrementAllCoins = async (coins: number) => {
         const users = this.database.collection<User>(Collections.Users)
-        users.updateMany( {}, {$inc: {coins: coins}})
+        await users.updateMany( {}, {$inc: {coins: coins}})
     };
 
     public  updateLeaderboard = async () => {
+        const users = this.database.collection<User>(Collections.Users)
+        const leaderboard = this.database.collection<LeaderboardUser>(Collections.Learderboard)
+        for(let i = 0; i < await users.countDocuments(); i++) {
+            users.findOne()
+        }
+        
         return []
     }
 

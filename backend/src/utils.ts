@@ -1,5 +1,6 @@
 import { Database } from "./Database";
 import { Request } from "express";
+import { LeaderboardUser } from "./LeaderboardUser";
 
 export const generateUUID = (length: number = 32) => {
     const chars = "abcdef";
@@ -32,3 +33,12 @@ export const doesExist = (values: any[]) => {
     }
     return true;
 };
+
+export const minimizeLeaderboard = (leaderboard: LeaderboardUser[]) => {
+    let minimizedLeaderboard: LeaderboardUser[] = [] 
+    for(let i = 0; i < 10; i++) {
+        minimizedLeaderboard.push(leaderboard[i])
+    }
+    
+    return minimizedLeaderboard
+}

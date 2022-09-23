@@ -1,12 +1,15 @@
 import { Database } from "./Database"
 import { Router, Request, Response } from "express"
+import { minimizeLeaderboard } from "./utils"
 
 
 export const leaderboardApiRoutes = (router: Router, database: Database) => {
     router.get("/leaderboard/update", async (req: Request, res: Response) => {
-        let leaderboard = await database.updateLeaderboard()
+        const leaderboard = await database.updateLeaderboard()
         
-        return res.json({msg: "Ok", leaderboard: leaderboard})
+        const minimizedLeaderboard = minimizeLeaderboard(leaderboard)
+
+        return res.json({msg: "Ok", leaderboard: minimizedLeaderboard})
 
     })
 

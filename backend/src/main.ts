@@ -11,10 +11,10 @@ const main = async () => {
     const app = express(); //create express app
 
 
-    //const database = new MongoDb();
-    //await database.connect();
+    const database = new MongoDb();
+    await database.connect();
 
-    const database = new MemoryDb();
+    //const database = new MemoryDb();
     app.use(cors()); //enables cors
     app.use(express.json()); //enables use of json in requests
     app.use(cookieParser());

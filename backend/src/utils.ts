@@ -37,6 +37,9 @@ export const doesExist = (values: any[]) => {
 export const minimizeLeaderboard = (leaderboard: LeaderboardUser[]) => {
     let minimizedLeaderboard: LeaderboardUser[] = [] 
     for(let i = 0; i < 10; i++) {
+        if (!leaderboard[i]) {
+            return minimizedLeaderboard
+        }
         minimizedLeaderboard.push(leaderboard[i])
     }
     

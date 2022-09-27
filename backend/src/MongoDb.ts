@@ -68,7 +68,7 @@ export class MongoDb extends Database {
     public calcCoinflipResult = async (user: User, coinflip: Coinflip) => {
         const users = this.database.collection<User>(Collections.Users)
         if (coinflip.flip()) {
-            await users.findOneAndUpdate({id: user.id}, {$set: {coins: (user.coins + coinflip.coinsUsed)}})
+            await users.findOneAndUpdate({id: user.id}, {$set: {coins: (user.coins + coinflip.coinsUsed), coinsWon: user.coinsWon + coinflip.coinsUsed}})
             return true;
         }
         await users.findOneAndUpdate({id: user.id}, {$set: {coins: (user.coins - coinflip.coinsUsed)}})
@@ -79,14 +79,16 @@ export class MongoDb extends Database {
         await users.updateMany( {}, {$inc: {coins: coins}})
     };
 
-    public  updateLeaderboard = async () => {
+    public updateLeaderboard = async () => {
         const users = this.database.collection<User>(Collections.Users)
         const leaderboard = this.database.collection<LeaderboardUser>(Collections.Learderboard)
+        leaderboard.drop()
         for(let i = 0; i < await users.countDocuments(); i++) {
-            users.findOne()
+            await leaderboard.insertOne({userId: (await users.find().toArray())[i].id, score: (await users.find().toArray())[i].coinsWon})
         }
+        const sortedLeaderboard = (await leaderboard.find().toArray()).sort(function(a, b){return b.score-a.score})
         
-        return []
+        return sortedLeaderboard
     }
 
 

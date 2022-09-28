@@ -25,5 +25,5 @@ export abstract class Database {
 
     public abstract incrementAllCoins: (coins: number) => Promise<void>
 
-    public abstract updateLeaderboard: () => Promise<LeaderboardUser[]>
+    public abstract refreshLeaderboard: () => Promise<LeaderboardUser[]>
 }

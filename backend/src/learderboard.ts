@@ -4,15 +4,13 @@ import { minimizeLeaderboard } from "./utils"
 
 
 export const leaderboardApiRoutes = (router: Router, database: Database) => {
-    router.get("/leaderboard/update", async (req: Request, res: Response) => {
-        const leaderboard = await database.updateLeaderboard()
+    router.get("/leaderboard/refresh", async (req: Request, res: Response) => {
+        const leaderboard = await database.refreshLeaderboard()
         
         const minimizedLeaderboard = minimizeLeaderboard(leaderboard)
 
         return res.json({msg: "Ok", leaderboard: minimizedLeaderboard})
 
     })
-
-    
     return router
 }

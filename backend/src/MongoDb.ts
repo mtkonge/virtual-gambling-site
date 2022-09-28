@@ -79,12 +79,13 @@ export class MongoDb extends Database {
         await users.updateMany( {}, {$inc: {coins: coins}})
     };
 
-    public updateLeaderboard = async () => {
+    public refreshLeaderboard = async () => {
         const users = this.database.collection<User>(Collections.Users)
         const leaderboard = this.database.collection<LeaderboardUser>(Collections.Learderboard)
         leaderboard.drop()
-        for(let i = 0; i < await users.countDocuments(); i++) {
-            await leaderboard.insertOne({userId: (await users.find().toArray())[i].id, score: (await users.find().toArray())[i].coinsWon})
+        const leaderboardLength = await users.countDocuments()
+        for(let i = 0; i < leaderboardLength; i++) {
+            await leaderboard.insertOne({username: (await users.find().toArray())[i].username, score: (await users.find().toArray())[i].coinsWon})
         }
         const sortedLeaderboard = (await leaderboard.find().toArray()).sort(function(a, b){return b.score-a.score})
         

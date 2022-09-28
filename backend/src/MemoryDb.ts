@@ -71,9 +71,9 @@ export class MemoryDb extends Database {
             this.users[i].coins += coins
         }
     };
-    public updateLeaderboard = async () => {
+    public refreshLeaderboard = async () => {
         for (let i = 0; i < this.users.length; i++) {
-            this.leaderboard.push(new LeaderboardUser(this.users[i].id, this.users[i].coinsWon))
+            this.leaderboard.push(new LeaderboardUser(this.users[i].username, this.users[i].coinsWon))
         }
         this.leaderboard = this.leaderboard.sort(function(a, b){return b.score-a.score})
         

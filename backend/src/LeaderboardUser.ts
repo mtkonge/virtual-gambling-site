@@ -1,11 +1,11 @@
 
 
 export class LeaderboardUser {
-    userId: number
+    username: string
     score: number
 
-    constructor(userId: number, score: number) {
-        this.userId = userId
+    constructor(username: string, score: number) {
+        this.username = username
         this.score = score
     }
 }

@@ -269,14 +269,26 @@ button:hover {
 
 .leaderboard {
     box-shadow: 0px 2px 4px black;
-    width: 200px;
-    
+    width: 25rem;
 }
+
+
 
 .leaderboard ol {
     padding: 0px 30px 0px 30px;
-
 }
+
+.leaderboard-text-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.leaderboard-text {
+    margin: 0;
+    display: inline;
+}
+
 .leaderboard-header {
     display: flex;
     justify-content: center;

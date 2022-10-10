@@ -1,5 +1,4 @@
 
-
 export class LeaderboardUser {
     username: string
     score: number

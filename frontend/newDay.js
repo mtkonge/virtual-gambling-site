@@ -1,6 +1,6 @@
 
 window.setInterval(async () => {
-    var date = new Date(); 
+    let date = new Date(); 
     if(date.getHours() === 0){ 
         res = await sendPostRequest("api/newDay")
         const body = await res.json();

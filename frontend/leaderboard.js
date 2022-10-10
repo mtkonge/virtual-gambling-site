@@ -13,7 +13,8 @@ const leaderboardMain = async () => {
         leaderboardList.innerHTML += 
         `<li>
             <span class=\"leaderboard-text-container\">
-                <p class=\"leaderboard-text\">${body.leaderboard[i].username}</p><p class=\"leaderboard-text\">${body.leaderboard[i].score}</p>
+                <p class=\"leaderboard-text\">${body.leaderboard[i].username}</p>
+                <p class=\"leaderboard-text\">${body.leaderboard[i].score}</p>
             </span>
         </li>`
     }

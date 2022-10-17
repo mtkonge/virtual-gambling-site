@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mongo: 
+    image: mongo:latest
+    restart: unless-stopped
+    expose:
+      - 27017
+  app:
+    depends_on:
+      - mongo
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+volumes:
+  db:
+    external: true

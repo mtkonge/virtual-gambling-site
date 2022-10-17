@@ -21,7 +21,7 @@ export class MongoDb extends Database {
     } 
 
     public connect = async () => {
-        const client = new MongoClient("mongodb://127.0.0.1:27017");
+        const client = new MongoClient(process.env.MONGO_URI ?? "mongodb://127.0.0.1:27017");
         await client.connect();
         const database = client.db("gambling-site");
         this.database = database;
